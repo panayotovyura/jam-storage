@@ -1,3 +1,5 @@
+<a href="https://travis-ci.org/panayotovyura/jam-storage"><img src="https://travis-ci.org/panayotovyura/jam-storage.svg?branch=master"></a>
+
 jam-storage
 ===========
 
