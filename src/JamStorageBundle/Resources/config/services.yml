@@ -1,0 +1,5 @@
+services:
+    jam_jar:
+        class: JamStorageBundle\Services\JamJarService
+        arguments:
+          - "@doctrine.orm.entity_manager"

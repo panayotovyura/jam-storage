@@ -1,0 +1,39 @@
+services:
+    sonata.admin.jam_type:
+        class: JamStorageBundle\Admin\JamTypeAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: "jam.group.enumerations"
+              label: "jam.type.mainlabel"
+              label_catalogue: "messages"
+        arguments:
+            - ~
+            - JamStorageBundle\Entity\JamType
+            - ~
+    sonata.admin.jam_year:
+        class: JamStorageBundle\Admin\JamYearAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: "jam.group.enumerations"
+              label: "jam.year.mainlabel"
+              label_catalogue: "messages"
+        arguments:
+            - ~
+            - JamStorageBundle\Entity\JamYear
+            - ~
+    sonata.admin.jam_jar:
+        class: JamStorageBundle\Admin\JamJarAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: "jam.group.jams"
+              label: "jam.jar.mainlabel"
+              label_catalogue: "messages"
+        arguments:
+            - ~
+            - JamStorageBundle\Entity\JamJar
+            - ~
+        calls:
+            - [ setJamJarService, ["@jam_jar"]]
