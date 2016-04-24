@@ -3,3 +3,6 @@ services:
         class: JamStorageBundle\Services\JamJarService
         arguments:
           - "@doctrine.orm.entity_manager"
+          - "@clone"
+    clone:
+        class: JamStorageBundle\Services\CloneService

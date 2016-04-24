@@ -13,30 +13,32 @@ class JamJarService
     private $entityManager;
 
     /**
+     * @var CloneService
+     */
+    private $cloneService;
+
+    /**
      * JamJarService constructor.
      * @param EntityManager $entityManager
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, CloneService $cloneService)
     {
         $this->entityManager = $entityManager;
+        $this->cloneService = $cloneService;
     }
 
     /**
      * Clone $jamJar object $amount times
      *
      * @param JamJar $jamJar
-     * @param $amount
+     * @param int $amount
      */
-    public function cloneJams(JamJar $jamJar, $amount)
+    public function cloneJams(JamJar $jamJar, int $amount)
     {
-        if (!is_int($amount) || $amount < 1) {
-            return;
-        }
-
         while ($amount--) {
-            // todo: it's better to make additional service for cloning. it will be easier to test this class
-            $cloneJamJar = clone $jamJar;
-            $this->entityManager->persist($cloneJamJar);
+            $this->entityManager->persist(
+                $this->cloneService->cloneObject($jamJar)
+            );
         }
 
         $this->entityManager->flush();

@@ -61,7 +61,10 @@ class JamJarAdmin extends Admin
             ->add(
                 'comment',
                 TextType::class,
-                ['label' => 'jam.jar.comment.label']
+                [
+                    'required' => false,
+                    'label' => 'jam.jar.comment.label',
+                ]
             );
 
         $jamJar = $this->getSubject();
